@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>École Supérieure - MonÉcole</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            background-image: url('background.jpg');
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #002f6c;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+        nav {
+            background-color: #004080;
+            overflow: hidden;
+        }
+        nav a {
+            float: left;
+            color: white;
+            padding: 14px 16px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .container {
+            padding: 2em;
+        }
+        .hidden {
+            display: none;
+        }
+        ul { list-style: none; padding-left: 0; }
+        li { margin-bottom: 0.5em; }
+        img {
+            width: 200px;
+            height: 150px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Université Joseph KI-ZERBO</h1>
+    <img src="Untitled design (56).png" alt="Logo" width="100">
+</header>
+
+<nav>
+    <a onclick="showSection('accueil')">Accueil</a>
+    <a onclick="showSection('academique')">Académique</a>
+    <a onclick="showSection('admission')">Admission</a>
+    <a onclick="showSection('galerie')">Galerie</a>
+</nav>
+
+<!-- ACCUEIL -->
+<div id="accueil" class="container">
+    <h2>Bienvenue à  l'Université Joseph KI-ZERBO  (UJKZ)</h2>
+    <p> Bienvenue sur le site officiel de l’Université Joseph KI-ZERBO (UJKZ) 
+C’est avec un immense plaisir que nous vous accueillons sur notre plateforme dédiée à la formation, la recherche et l’excellence académique.
+L’UJKZ, première université publique du Burkina Faso, est un espace de savoir, d’innovation et de rayonnement africain et international. Étudiants, enseignants, chercheurs, visiteurs ou partenaires, ce site vous offre toutes les informations utiles sur nos filières, nos facultés, nos services, ainsi que sur la vie universitaire à Ouagadougou.</p>
+</div>
+
+<!-- ACADÉMIQUE -->
+<div id="academique" class="container hidden">
+    <h2>Départements Académiques</h2>
+    <h2>/* cliquer sur une matière pour voir le contenu */</h2>
+    <ul>
+        <li>
+            <strong>Arts</strong>
+            <ul>
+                <li><a onclick="showCours('Anglais')">Anglais</a></li>
+                <li><a onclick="showCours('Sociologie')">Sociologie</a></li>
+            </ul>
+        </li>
+        <li>
+            <strong>Sciences</strong>
+            <ul>
+                <li><a onclick="showCours('Informatique')">Informatique</a></li>
+                <li><a onclick="showCours('Mathématiques')">Mathématiques</a></li>
+            </ul>
+        </li>
+        <li>
+            <strong>Commerce</strong>
+            <ul>
+                <li><a onclick="showCours('Marketing')">Marketing</a></li>
+                <li><a onclick="showCours('Finance')">Finance</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<!-- DÉTAIL DU COURS -->
+<div id="cours" class="container hidden">
+    <h2 id="titre-cours">Cours</h2>
+    <p id="desc-cours">Description du cours...</p>
+    <p><strong>Enseignants :</strong> <span id="enseignants"></span></p>
+    <p><strong>Calendrier :</strong> <span id="calendrier"></span></p>
+    <button onclick="showSection('academique')">Retour</button>
+</div>
+
+<!-- ADMISSION -->
+<div id="admission" class="container hidden">
+    <h2>Formulaire d'admission</h2>
+    <form>
+        Nom : <input type="text" name="nom"><br><br>
+        Email : <input type="email" name="email"><br><br>
+        Date de naissance : <input type="date" name="dob"><br><br>
+        Choix de département :
+        <select>
+            <option>Arts</option>
+            <option>Sciences</option>
+            <option>Commerce</option>
+        </select><br><br>
+        Niveau d'études précédent : <input type="text"><br><br>
+        Motivation : <textarea rows="4" cols="40"></textarea><br><br>
+        <input type="submit" value="Soumettre">
+    </form>
+</div>
+
+<!-- GALERIE -->
+<div id="galerie" class="container hidden">
+    <h2>Galerie Photos</h2>
+    <img src="Le-bâtiment-devant-abrité-les-écoles-doctorales.jpg" alt="Photo école">
+    <img src="0M5A8799-scaled.jpg" alt="Étudiants">
+    <img src="whatsapp_image_2023-06-08_at_11.25.15.jpg" alt="Laboratoire">
+</div>
+
+<script>
+    function showSection(id) {
+        const sections = ['accueil', 'academique', 'admission', 'galerie', 'cours'];
+        sections.forEach(sec => document.getElementById(sec).classList.add('hidden'));
+        document.getElementById(id).classList.remove('hidden');
+    }
+
+    const coursDetails = {
+        "Anglais": {
+            desc: "Étude de la littérature anglaise classique et moderne.",
+            enseignants: "Mme Dupont, M. Leroy",
+            calendrier: "Lundi et Mercredi, 10h-12h"
+        },
+        "Sociologie": {
+            desc: "Introduction à la sociologie et aux dynamiques sociales.",
+            enseignants: "M. Benali, Mme Rachid",
+            calendrier: "Mardi et Jeudi, 14h-16h"
+        },
+        "Informatique": {
+            desc: "Programmation, structures de données et algorithmes.",
+            enseignants: "Mme Haddad, M. Touati",
+            calendrier: "Lundi et Mercredi, 8h-10h"
+        },
+        "Mathématiques": {
+            desc: "Analyse, algèbre linéaire et statistiques.",
+            enseignants: "M. Karim, Mme Saidi",
+            calendrier: "Mardi et Jeudi, 10h-12h"
+        },
+        "Marketing": {
+            desc: "Bases du marketing, études de marché, stratégie produit.",
+            enseignants: "Mme Lahlou, M. Bensalem",
+            calendrier: "Lundi et Vendredi, 13h-15h"
+        },
+        "Finance": {
+            desc: "Gestion financière, comptabilité et investissements.",
+            enseignants: "M. Djelloul, Mme Yasmine",
+            calendrier: "Mercredi et Vendredi, 9h-11h"
+        }
+    };
+
+    function showCours(nom) {
+        const c = coursDetails[nom];
+        document.getElementById('titre-cours').textContent = nom;
+        document.getElementById('desc-cours').textContent = c.desc;
+        document.getElementById('enseignants').textContent = c.enseignants;
+        document.getElementById('calendrier').textContent = c.calendrier;
+        showSection('cours');
+    }
+
+    showSection('accueil'); 
+</script>
+
+</body>
+</html>
